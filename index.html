@@ -15,6 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            perspective: 1000px;
         }
         .profile-card {
             background: #fff;
@@ -23,6 +24,11 @@
             width: 350px;
             padding: 30px;
             text-align: center;
+            transform: rotateY(20deg);
+            transition: transform 0.5s ease-in-out;
+        }
+        .profile-card:hover {
+            transform: rotateY(0);
         }
         .profile-card img {
             border-radius: 50%;
@@ -31,6 +37,11 @@
             object-fit: cover;
             margin-bottom: 20px;
             border: 4px solid #4ca1af;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out;
+        }
+        .profile-card img:hover {
+            transform: scale(1.1);
         }
         .profile-card h2 {
             margin: 10px 0;
@@ -78,17 +89,17 @@
 <body>
     <div class="profile-card">
         <img src="https://via.placeholder.com/120" alt="Profile Picture">
-        <h2>John Doe</h2>
+        <h2>Nurzhan Tolebay</h2>
         <p class="occupation">Senior Web Developer</p>
-        <p class="location">San Francisco, CA</p>
+        <p class="location">Kazakhstan, Astana</p>
         <div class="bio">
-            <p>John is a highly skilled web developer with over 10 years of experience in building dynamic and responsive websites. He specializes in JavaScript, React, and Node.js, and is passionate about creating seamless user experiences.</p>
+            <p>Nurzhan is a highly skilled web developer with over 10 years of experience in building dynamic and responsive websites. He specializes in JavaScript, React, and Node.js, and is passionate about creating seamless user experiences.</p>
         </div>
         <div class="social-media">
-            <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
-            <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/nurzhan" target="_blank">Twitter</a>
+            <a href="https://linkedin.com/in/nurzhan" target="_blank">LinkedIn</a>
         </div>
-        <a href="https://johndoe.com" class="button" target="_blank">Visit Website</a>
+        <a href="https://nurzhan.com" class="button" target="_blank">Visit Website</a>
     </div>
 </body>
 </html>
