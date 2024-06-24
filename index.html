@@ -8,15 +8,43 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            perspective: 1000px;
+            overflow: hidden;
+            background: #2c3e50;
         }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background .creature {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.8;
+            animation: swim 10s linear infinite;
+        }
+
+        @keyframes swim {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+            }
+        }
+
         .profile-card {
             background: #fff;
             border-radius: 15px;
@@ -26,10 +54,13 @@
             text-align: center;
             transform: rotateY(20deg);
             transition: transform 0.5s ease-in-out;
+            z-index: 1;
         }
+
         .profile-card:hover {
             transform: rotateY(0);
         }
+
         .profile-card img {
             border-radius: 50%;
             width: 120px;
@@ -40,37 +71,45 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s ease-in-out;
         }
+
         .profile-card img:hover {
             transform: scale(1.1);
         }
+
         .profile-card h2 {
             margin: 10px 0;
             font-size: 1.8em;
             color: #2c3e50;
         }
+
         .profile-card p {
             margin: 5px 0;
             font-size: 1em;
             color: #555;
         }
+
         .profile-card .location {
             color: #888;
             font-style: italic;
         }
+
         .profile-card .bio {
             margin: 20px 0;
             font-size: 1em;
             color: #555;
         }
+
         .profile-card .social-media a {
             margin: 0 10px;
             text-decoration: none;
             color: #4ca1af;
             transition: color 0.3s;
         }
+
         .profile-card .social-media a:hover {
             color: #2c3e50;
         }
+
         .profile-card .button {
             display: inline-block;
             padding: 10px 20px;
@@ -81,14 +120,19 @@
             text-decoration: none;
             transition: background 0.3s;
         }
+
         .profile-card .button:hover {
             background: #2c3e50;
         }
     </style>
 </head>
 <body>
+    <div class="background">
+        <!-- Creature elements will be added dynamically via JavaScript -->
+    </div>
+
     <div class="profile-card">
-        <img src="https://via.placeholder.com/120" alt="Profile Picture">
+        <img src="https://cf.girlsaskguys.com/q2825323/2ba0ccdb-c95c-4a14-aca1-ea0782a36cad.jpg" alt="Profile Picture">
         <h2>Nurzhan Tolebay</h2>
         <p class="occupation">Senior Web Developer</p>
         <p class="location">Kazakhstan, Astana</p>
@@ -101,5 +145,30 @@
         </div>
         <a href="https://nurzhan.com" class="button" target="_blank">Visit Website</a>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const background = document.querySelector('.background');
+
+            const creatures = [
+                'https://via.placeholder.com/50?text=🐟', // Replace with actual URLs of sea creature images
+                'https://via.placeholder.com/50?text=🐠',
+                'https://via.placeholder.com/50?text=🐡',
+                'https://via.placeholder.com/50?text=🦀',
+                'https://via.placeholder.com/50?text=🦑',
+            ];
+
+            for (let i = 0; i < 50; i++) {
+                const creature = document.createElement('div');
+                creature.classList.add('creature');
+                creature.style.backgroundImage = `url(${creatures[Math.floor(Math.random() * creatures.length)]})`;
+                creature.style.left = `${Math.random() * 100}vw`;
+                creature.style.top = `${Math.random() * 100}vh`;
+                creature.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                creature.style.animationDelay = `${Math.random() * 10}s`;
+                background.appendChild(creature);
+            }
+        });
+    </script>
 </body>
 </html>
