@@ -28,20 +28,22 @@
             z-index: -1;
         }
 
-        .background .creature {
+        .background .dot {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
             opacity: 0.8;
-            animation: swim 10s linear infinite;
+            animation: move 10s linear infinite;
         }
 
-        @keyframes swim {
+        @keyframes move {
             0% {
                 transform: translateY(0) translateX(0);
             }
             100% {
-                transform: translateY(-100vh) translateX(100vw);
+                transform: translateY(-100vh) translateX(calc(100vw * -1 + 50vw));
             }
         }
 
@@ -128,7 +130,7 @@
 </head>
 <body>
     <div class="background">
-        <!-- Creature elements will be added dynamically via JavaScript -->
+        <!-- Dot elements will be added dynamically via JavaScript -->
     </div>
 
     <div class="profile-card">
@@ -150,23 +152,14 @@
         document.addEventListener("DOMContentLoaded", function() {
             const background = document.querySelector('.background');
 
-            const creatures = [
-                'https://via.placeholder.com/50?text=🐟', // Replace with actual URLs of sea creature images
-                'https://via.placeholder.com/50?text=🐠',
-                'https://via.placeholder.com/50?text=🐡',
-                'https://via.placeholder.com/50?text=🦀',
-                'https://via.placeholder.com/50?text=🦑',
-            ];
-
-            for (let i = 0; i < 50; i++) {
-                const creature = document.createElement('div');
-                creature.classList.add('creature');
-                creature.style.backgroundImage = `url(${creatures[Math.floor(Math.random() * creatures.length)]})`;
-                creature.style.left = `${Math.random() * 100}vw`;
-                creature.style.top = `${Math.random() * 100}vh`;
-                creature.style.animationDuration = `${Math.random() * 20 + 10}s`;
-                creature.style.animationDelay = `${Math.random() * 10}s`;
-                background.appendChild(creature);
+            for (let i = 0; i < 100; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.style.left = `${Math.random() * 100}vw`;
+                dot.style.top = `${Math.random() * 100}vh`;
+                dot.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                dot.style.animationDelay = `${Math.random() * 10}s`;
+                background.appendChild(dot);
             }
         });
     </script>
