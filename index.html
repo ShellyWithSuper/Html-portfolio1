@@ -24,23 +24,24 @@
 
         .animal {
             position: absolute;
-            bottom: 0;
+            bottom: 20px;
             width: 150px;
             height: 150px;
             background-size: cover;
+            background-position: center;
         }
 
         .lion {
             left: 10%;
-            background-image: url('https://path-to-your-lion-image.png');
+            background-image: url('https://via.placeholder.com/150?text=Lion');
         }
 
         .bear {
             right: 10%;
-            background-image: url('https://path-to-your-bear-image.png');
+            background-image: url('https://via.placeholder.com/150?text=Bear');
         }
 
-        @keyframes fight {
+        @keyframes move {
             0% { transform: translateX(0); }
             50% { transform: translateX(-50px); }
             100% { transform: translateX(0); }
@@ -57,11 +58,11 @@
         }
 
         .fight-lion {
-            animation: fight 1s infinite;
+            animation: move 1s infinite;
         }
 
         .fight-bear {
-            animation: fight 1s infinite;
+            animation: move 1s infinite;
         }
 
         .bear-attack {
