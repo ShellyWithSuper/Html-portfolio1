@@ -3,329 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Lion vs Bear</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            color: #333;
+            margin: 0;
+            overflow: hidden;
+            background: #87CEEB;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            background: #2c3e50;
         }
 
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .arena {
+            position: relative;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1;
+            background: #228B22;
         }
 
-        .cloud {
+        .animal {
             position: absolute;
-            background: #fff;
-            opacity: 0.8;
-            animation: moveClouds 60s linear infinite;
-        }
-
-        .cloud-1 {
-            width: 200px;
-            height: 60px;
-            top: 10%;
-            left: 0%;
-            animation-duration: 60s;
-        }
-
-        .cloud-2 {
-            width: 250px;
-            height: 70px;
-            top: 20%;
-            left: 20%;
-            animation-duration: 75s;
-        }
-
-        .cloud-3 {
+            bottom: 0;
             width: 150px;
-            height: 50px;
-            top: 30%;
-            left: 60%;
-            animation-duration: 90s;
+            height: 150px;
+            background-size: cover;
         }
 
-        .cloud-4 {
-            width: 180px;
-            height: 55px;
-            top: 40%;
-            left: 80%;
-            animation-duration: 120s;
+        .lion {
+            left: 10%;
+            background-image: url('https://path-to-your-lion-image.png');
         }
 
-        @keyframes moveClouds {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+        .bear {
+            right: 10%;
+            background-image: url('https://path-to-your-bear-image.png');
         }
 
-        .lightning {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
-            opacity: 0;
-            animation: flash 0.2s linear infinite;
+        @keyframes fight {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-50px); }
+            100% { transform: translateX(0); }
         }
 
-        .lightning-1 {
-            left: 30%;
-            animation-delay: 5s;
+        @keyframes bearAttack {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-100px); }
         }
 
-        .lightning-2 {
-            left: 70%;
-            animation-delay: 10s;
+        @keyframes lionFall {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-200px) translateY(100px) rotate(90deg); }
         }
 
-        @keyframes flash {
-            0% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
+        .fight-lion {
+            animation: fight 1s infinite;
         }
 
-        .background .raindrop {
-            position: absolute;
-            width: 2px;
-            height: 10px;
-            background-color: #3498db;
-            opacity: 0.8;
-            animation: fall 5s linear infinite;
-            pointer-events: none;
+        .fight-bear {
+            animation: fight 1s infinite;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
+        .bear-attack {
+            animation: bearAttack 1s forwards;
         }
 
-        .building {
-            position: absolute;
-            bottom: 0;
-            width: 200px;
-            height: 300px;
-            background: #34495e;
-        }
-
-        .building-1 {
-            left: 5%;
-            height: 200px;
-        }
-
-        .building-2 {
-            left: 25%;
-            height: 250px;
-        }
-
-        .building-3 {
-            left: 45%;
-            height: 300px;
-        }
-
-        .building-4 {
-            left: 65%;
-            height: 220px;
-        }
-
-        .building-5 {
-            left: 85%;
-            height: 260px;
-        }
-
-        .car {
-            position: absolute;
-            bottom: 0;
-            width: 80px;
-            height: 40px;
-            background: red;
-            border-radius: 10px;
-            animation: moveCar 5s linear infinite;
-        }
-
-        .car-1 {
-            left: -10%;
-            animation-duration: 10s;
-        }
-
-        .car-2 {
-            left: -20%;
-            animation-duration: 12s;
-        }
-
-        @keyframes moveCar {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(110vw);
-            }
-        }
-
-        .profile-card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            padding: 30px;
-            text-align: center;
-            transform: rotateY(20deg);
-            transition: transform 0.5s ease-in-out;
-            z-index: 1;
-        }
-
-        .profile-card:hover {
-            transform: rotateY(0);
-        }
-
-        .profile-card img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid #4ca1af;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .profile-card img:hover {
-            transform: scale(1.1);
-        }
-
-        .profile-card h2 {
-            margin: 10px 0;
-            font-size: 1.8em;
-            color: #2c3e50;
-        }
-
-        .profile-card p {
-            margin: 5px 0;
-            font-size: 1em;
-            color: #555;
-        }
-
-        .profile-card .location {
-            color: #888;
-            font-style: italic;
-        }
-
-        .profile-card .bio {
-            margin: 20px 0;
-            font-size: 1em;
-            color: #555;
-        }
-
-        .profile-card .social-media a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #4ca1af;
-            transition: color 0.3s;
-        }
-
-        .profile-card .social-media a:hover {
-            color: #2c3e50;
-        }
-
-        .profile-card .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 25px;
-            background: #4ca1af;
-            color: #fff;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .profile-card .button:hover {
-            background: #2c3e50;
+        .lion-fall {
+            animation: lionFall 1s forwards;
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="cloud cloud-1">
-            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
-        </div>
-        <div class="cloud cloud-2">
-            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
-        </div>
-        <div class="cloud cloud-3">
-            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
-        </div>
-        <div class="cloud cloud-4">
-            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
-        </div>
-        <div class="lightning lightning-1"></div>
-        <div class="lightning lightning-2"></div>
-        <div class="building building-1"></div>
-        <div class="building building-2"></div>
-        <div class="building building-3"></div>
-        <div class="building building-4"></div>
-        <div class="building building-5"></div>
-        <div class="car car-1"></div>
-        <div class="car car-2"></div>
-    </div>
-
-    <div class="profile-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQNq-UumX3CaNJ1y4dOM7N_2j_YEFeZTcK5w&s" alt="Profile Picture">
-        <h2>Nurzhan Tolebay</h2>
-        <p class="occupation">Senior Web Developer</p>
-        <p class="location">Kazakhstan, Astana</p>
-        <div class="bio">
-            <p>Nurzhan is a highly skilled web developer with over 10 years of experience in building dynamic and responsive websites. He specializes in JavaScript, React, and Node.js, and is passionate about creating seamless user experiences.</p>
-        </div>
-        <div class="social-media">
-            <a href="https://twitter.com/nurzhan" target="_blank">Twitter</a>
-            <a href="https://linkedin.com/in/nurzhan" target="_blank">LinkedIn</a>
-        </div>
-        <a href="https://nurzhan.com" class="button" target="_blank">Visit Website</a>
+    <div class="arena">
+        <div class="animal lion"></div>
+        <div class="animal bear"></div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const background = document.querySelector('.background');
+        document.addEventListener("DOMContentLoaded", () => {
+            const lion = document.querySelector('.lion');
+            const bear = document.querySelector('.bear');
 
-            for (let i = 0; i < 100; i++) {
-                const raindrop = document.createElement('div');
-                raindrop.classList.add('raindrop');
-                raindrop.style.left = `${Math.random() * 100}vw`;
-                raindrop.style.top = `${Math.random() * 100}vh`;
-                raindrop.style.animationDelay = `${Math.random() * 5}s`;
-                background.appendChild(raindrop);
-            }
+            // Start fight animation
+            lion.classList.add('fight-lion');
+            bear.classList.add('fight-bear');
+
+            // After 3 seconds, bear attacks and lion falls
+            setTimeout(() => {
+                lion.classList.remove('fight-lion');
+                bear.classList.remove('fight-bear');
+                bear.classList.add('bear-attack');
+            }, 3000);
+
+            setTimeout(() => {
+                lion.classList.add('lion-fall');
+            }, 4000);
         });
     </script>
 </body>
