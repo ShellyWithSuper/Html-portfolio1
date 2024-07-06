@@ -33,44 +33,53 @@
 
         .lion {
             left: 10%;
-            background-image: url('https://via.placeholder.com/150?text=Lion');
+            background-image: url('https://i.natgeofe.com/k/1d33938b-3d02-4773-91e3-70b113c3b8c7/lion-male-roar_square.jpg');
         }
 
         .bear {
             right: 10%;
-            background-image: url('https://via.placeholder.com/150?text=Bear');
+            background-image: url('https://www.biologicaldiversity.org/assets/img/species/mammals/GrizzlyBearRobinSilver.jpg');
         }
 
-        @keyframes move {
+        @keyframes moveForward {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+        @keyframes moveBackward {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+
+        @keyframes attack {
             0% { transform: translateX(0); }
             50% { transform: translateX(-50px); }
             100% { transform: translateX(0); }
         }
 
-        @keyframes bearAttack {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-100px); }
-        }
-
-        @keyframes lionFall {
-            0% { transform: translateX(0); }
+        @keyframes fall {
+            0% { transform: translateX(0) translateY(0) rotate(0); }
             100% { transform: translateX(-200px) translateY(100px) rotate(90deg); }
         }
 
-        .fight-lion {
-            animation: move 1s infinite;
+        .lion-advance {
+            animation: moveForward 1s forwards;
         }
 
-        .fight-bear {
-            animation: move 1s infinite;
+        .bear-advance {
+            animation: moveBackward 1s forwards;
+        }
+
+        .lion-attack {
+            animation: attack 1s forwards;
         }
 
         .bear-attack {
-            animation: bearAttack 1s forwards;
+            animation: attack 1s forwards;
         }
 
         .lion-fall {
-            animation: lionFall 1s forwards;
+            animation: fall 1s forwards;
         }
     </style>
 </head>
@@ -85,18 +94,25 @@
             const lion = document.querySelector('.lion');
             const bear = document.querySelector('.bear');
 
-            // Start fight animation
-            lion.classList.add('fight-lion');
-            bear.classList.add('fight-bear');
-
-            // After 3 seconds, bear attacks and lion falls
+            // Sequence of events
             setTimeout(() => {
-                lion.classList.remove('fight-lion');
-                bear.classList.remove('fight-bear');
+                lion.classList.add('lion-advance');
+                bear.classList.add('bear-advance');
+            }, 1000);
+
+            setTimeout(() => {
+                lion.classList.remove('lion-advance');
+                bear.classList.remove('bear-advance');
+                lion.classList.add('lion-attack');
+            }, 2000);
+
+            setTimeout(() => {
+                lion.classList.remove('lion-attack');
                 bear.classList.add('bear-attack');
             }, 3000);
 
             setTimeout(() => {
+                bear.classList.remove('bear-attack');
                 lion.classList.add('lion-fall');
             }, 4000);
         });
