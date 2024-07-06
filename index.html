@@ -31,8 +31,6 @@
         .cloud {
             position: absolute;
             background: #fff;
-            background: linear-gradient(to bottom, #f0f0f0 5%, #fff 100%);
-            border-radius: 50%;
             opacity: 0.8;
             animation: moveClouds 60s linear infinite;
         }
@@ -133,6 +131,68 @@
             }
         }
 
+        .building {
+            position: absolute;
+            bottom: 0;
+            width: 200px;
+            height: 300px;
+            background: #34495e;
+        }
+
+        .building-1 {
+            left: 5%;
+            height: 200px;
+        }
+
+        .building-2 {
+            left: 25%;
+            height: 250px;
+        }
+
+        .building-3 {
+            left: 45%;
+            height: 300px;
+        }
+
+        .building-4 {
+            left: 65%;
+            height: 220px;
+        }
+
+        .building-5 {
+            left: 85%;
+            height: 260px;
+        }
+
+        .car {
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 40px;
+            background: red;
+            border-radius: 10px;
+            animation: moveCar 5s linear infinite;
+        }
+
+        .car-1 {
+            left: -10%;
+            animation-duration: 10s;
+        }
+
+        .car-2 {
+            left: -20%;
+            animation-duration: 12s;
+        }
+
+        @keyframes moveCar {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(110vw);
+            }
+        }
+
         .profile-card {
             background: #fff;
             border-radius: 15px;
@@ -216,12 +276,27 @@
 </head>
 <body>
     <div class="background">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-1">
+            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
+        </div>
+        <div class="cloud cloud-2">
+            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
+        </div>
+        <div class="cloud cloud-3">
+            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
+        </div>
+        <div class="cloud cloud-4">
+            <img src="https://www.publicdomainpictures.net/pictures/320000/velka/cloud-background-1573660276kMg.jpg" alt="cloud">
+        </div>
         <div class="lightning lightning-1"></div>
         <div class="lightning lightning-2"></div>
+        <div class="building building-1"></div>
+        <div class="building building-2"></div>
+        <div class="building building-3"></div>
+        <div class="building building-4"></div>
+        <div class="building building-5"></div>
+        <div class="car car-1"></div>
+        <div class="car car-2"></div>
     </div>
 
     <div class="profile-card">
